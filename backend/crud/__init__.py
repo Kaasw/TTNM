@@ -1,1 +1,1 @@
-from .user import user, userInteract
+from .user import user
