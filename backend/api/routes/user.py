@@ -9,16 +9,11 @@ from sqlalchemy.exc import SQLAlchemyError
 from api import deps
 import crud
 import sqlalchemy
+from security import manager
+import logging
 
 router = APIRouter()
-# oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-# SECRET_KEY = "abc"
-# manager = LoginManager(SECRET_KEY, token_url='/auth/token')
-
-# @router.post("/users/", response_model=schemas.User)
-# def create(user: schemas.UserCreate, db: Session = Depends(deps.get_db)):
-#     return crud.create(db=db, user=user)
 
 @router.post("/", response_model=UserById)
 def create_user(user_in: UserCreate, db: Session = Depends(deps.get_db)):
@@ -43,6 +38,15 @@ def get_user_by_user_id(user_id: int, db: Session = Depends(deps.get_db)):
         )
     return user
 
+@router.get("/by_name/{username}", response_model=UserLogin)
+def get_user_by_name(username: str, db: Session = Depends(deps.get_db)):
+    user = crud.userInteract.get_by_username(db, username=username)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User with name {username} not found",
+        )
+        return user
 
 
 

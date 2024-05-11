@@ -69,6 +69,8 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
 class UserCRUD:
     def __init__(self, model: Type[UserType]):
         self.model = model
+    def get_by_username(self, db: Session, username: str) -> Optional[UserType]:
+        return db.query(self.model).filter(self.model.username == username).first()
     
     
     
