@@ -7,7 +7,7 @@ from api.base import api_router
 from fastapi.responses import JSONResponse
 from fastapi.exception_handlers import request_validation_exception_handler
 from fastapi.encoders import jsonable_encoder
-
+import model
 app = FastAPI()
 
 origins = [
@@ -24,7 +24,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
+class request_body(BaseModel):
+    input_text :  str
+@app.post('/predict')
+def predict(data: request_body):
+    input_model = data.input_text
+    output = model.summarize(input_model)
+    return output
 app.include_router(api_router, prefix="/api")
 app.mount("/api", api_router, name="api")
 
