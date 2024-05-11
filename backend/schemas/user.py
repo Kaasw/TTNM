@@ -3,7 +3,6 @@
 from pydantic import BaseModel
 
 class UserBase(BaseModel):
-    password: str
     username: str
     full_name: str
     email: str
@@ -20,6 +19,12 @@ class UserById(UserBase):
 class UserLogin(BaseModel):
     username: str
     password: str
+
+class UserByName(UserBase):
+    username: str
+    
+    class Config:
+        from_attributes = True
 
 class UserUpdate:
     pass
