@@ -20,6 +20,12 @@ class UserLogin(BaseModel):
     username: str
     password: str
 
+class UserByName(UserBase):
+    username: str
+    
+    class Config:
+        from_attributes = True
+
 class UserUpdate:
     pass
 

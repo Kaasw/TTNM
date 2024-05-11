@@ -12,6 +12,7 @@ CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
 UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
 
 
+
 class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     def __init__(self, model: Type[ModelType]):
         """
@@ -65,12 +66,16 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         db.delete(obj)
         db.commit()
         return True
-    
+
 class UserCRUD:
     def __init__(self, model: Type[UserType]):
         self.model = model
     def get_by_username(self, db: Session, username: str) -> Optional[UserType]:
         return db.query(self.model).filter(self.model.username == username).first()
+    def get_by_email(self, db: Session, email: str) -> Optional[UserType]:
+        return db.query(self.model).filter(self.model.email == email).first()
+    def list_all_user(self, db: Session) -> List[UserType]:
+        return db.query(self.model).all()
     
-    
+
     

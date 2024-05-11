@@ -17,7 +17,7 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
         raise InvalidCredentialsException
 
     token = manager.create_access_token(data={'user_id': user.id,'sub': user.username,
-                                              'full_name': user.fullname, 
+                                              'full_name': user.full_name, 
                                               'email': user.email, 
                                               'password': user.password})
     return Token(access_token=token, token_type='bearer')

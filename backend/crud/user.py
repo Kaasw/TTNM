@@ -1,6 +1,6 @@
 from typing import Type
 from crud.base import CRUDBase, UserCRUD
-from schemas import UserById, UserCreate, UserUpdate, UserLogin
+from schemas import UserByName, UserById, UserCreate, UserUpdate, UserLogin
 from models import User
 
 
