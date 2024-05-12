@@ -29,4 +29,5 @@ class UserByName(UserBase):
 class UserUpdate:
     pass
 
-
+class request_body(BaseModel):
+    input_text :  str
