@@ -40,6 +40,7 @@ def get_user_by_user_id(user_id: int, db: Session = Depends(deps.get_db)):
 def predict(data: request_body):
     input_model = data.input_text
     output = model.summarize(input_model)
-    return output
+    res = request_body(input_text= output)
+    return res
 
 

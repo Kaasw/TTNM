@@ -1,7 +1,7 @@
 # Pydantic model
 
 from pydantic import BaseModel
-
+from dataclasses import dataclass
 class UserBase(BaseModel):
     username: str
     full_name: str
@@ -29,5 +29,6 @@ class UserByName(UserBase):
 class UserUpdate:
     pass
 
-class request_body(BaseModel):
+@dataclass
+class request_body():
     input_text :  str
