@@ -7,7 +7,7 @@ import pymysql
 import models
 from models.user import User, Base
 
-SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://root:29102003@localhost:3306/ttnm"
+SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://root:4444@localhost:3306/ttnm"
 
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
