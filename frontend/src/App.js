@@ -1,7 +1,12 @@
 import logo from './logo.svg';
+import React, { lazy, useEffect } from 'react'
 import './App.css';
 
 function App() {
+  useEffect(() => {
+		document.title = "ADHD";
+	}, []);
+
   return (
     <div className="App">
       <header className="App-header">
