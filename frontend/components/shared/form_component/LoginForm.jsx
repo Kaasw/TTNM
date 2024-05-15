@@ -38,7 +38,7 @@ export default function LoginForm() {
 				const decodeToken = JSON.parse(
 					atob(respond.data.access_token.split(".")[1])
 				);
-				localStorage.setItem("isAdmin", decodeToken.is_admin);
+				
 				toast.success("Đăng nhập thành công");
 				setTimeout(() => {
 					window.location.href = "/";
