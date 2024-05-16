@@ -4,7 +4,8 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Request
 from api.base import api_router
-from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import JSONResponse, FileResponse
 from fastapi.exception_handlers import request_validation_exception_handler
 from fastapi.encoders import jsonable_encoder
 import model
@@ -27,6 +28,12 @@ app.add_middleware(
 
 app.include_router(api_router, prefix="/api")
 app.mount("/api", api_router, name="api")
+
+
+
+@app.get("/{full_path:path}")
+async def catch_all(full_path: str):
+    return FileResponse("../frontend/build/index.html")
 
 if __name__ == "__main__":
     import uvicorn

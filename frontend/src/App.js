@@ -6,12 +6,13 @@ import NavigationBar from "./components/shared/NavigationBar";
 
 
 const LoginScreen = lazy(() => import("./screen/LoginScreen"));
+const SignUpScreen = lazy(() => import("./screen/SignUpScreen"));
 const MyToast = lazy(() => import("./components/shared/MyToast"));
 
 
 function App() {
 	useEffect(() => {
-		document.title = "Keebi3.";
+		document.title = "ADHD";
 	}, []);
 
 	return (
@@ -34,6 +35,19 @@ function App() {
 						</Suspense>
 					</Route>
 
+          <Route path="/signup">
+						<Suspense
+							fallback={
+								<div className="flex h-screen">
+									<div className="font-mono font-bold text-3xl m-auto">
+										Loading...
+									</div>
+								</div>
+							}
+						>
+							<SignUpScreen />
+						</Suspense>
+					</Route>
 
 				</Switch>
 				<Footer />

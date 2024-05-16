@@ -6,7 +6,7 @@ export default function LoginScreen() {
 		<div className="bg-gray-100 flex justify-center items-center h-screen">
 			<div className="w-1/2 h-screen hidden lg:block">
 				<img
-					src="https://keebsforall.com/cdn/shop/products/Zoom65_1.webp?v=1674710934&width=2048"
+					src="https://images.unsplash.com/photo-1494459940152-1e911caa8cc5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 					alt="Placeholder"
 					className="object-cover w-full h-full"
 				/>

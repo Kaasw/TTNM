@@ -62,7 +62,7 @@ const NavigationBar = () => {
 	return (
 		<nav className="sticky w-full top-0 z-10 flex justify-between items-center h-18 mx-auto px-4 text-black bg-[#F8C70E]">
 			<h1 className="text-3xl font-mono font-bold p-4 text-[#000000]">
-				<a className="hover:text-[#FFF5D6]" href="/">Keebi3.</a>
+				<a className="hover:text-[#FFF5D6]" href="/">ADHDApp</a>
 			</h1>
 
 			<div className="hidden md:flex">
@@ -117,11 +117,8 @@ const NavigationBar = () => {
 				<ul className="p-2 font-mono">
 					<li className="p-4 border-b border-[#F2D15D]">Home</li>
 					<li className="p-4 border-b border-[#F2D15D]">About</li>
-					<li className="p-4 border-b border-[#F2D15D]">Product</li>
 					<li className="p-4 border-b border-[#F2D15D]">Contact</li>
-					<li className="p-4 border-b border-[#F2D15D]">Bid</li>
 					<li className="p-4 border-b border-[#F2D15D]">Account</li>
-					<li className="p-4 border-b border-[#F2D15D]">Cart</li>
 				</ul>
 			</div>
 		</nav>
