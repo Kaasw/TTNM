@@ -1,10 +1,10 @@
 import React, { useEffect, lazy, Suspense } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Layout } from "antd";
 import Footer from "./components/shared/Footer";
 import NavigationBar from "./components/shared/NavigationBar";
 
-
+const HomeScreen = lazy(() => import("./screen/HomeScreen"));
 const LoginScreen = lazy(() => import("./screen/LoginScreen"));
 const SignUpScreen = lazy(() => import("./screen/SignUpScreen"));
 const MyToast = lazy(() => import("./components/shared/MyToast"));
@@ -15,12 +15,32 @@ function App() {
 		document.title = "ReadEasy";
 	}, []);
 
+	const isLoggedIn = localStorage.getItem("token");
+
 	return (
 		<Router>
 			<Layout>
 				<NavigationBar />
-				{/* <MyToast /> */}
+				<MyToast />
 				<Switch>
+
+     		<Route exact path="/">
+            			{isLoggedIn ? (
+          	   	 			<Suspense
+								  fallback={
+									  <div className="flex h-screen">
+										  <div className="font-mono font-bold text-3xl m-auto">
+											  Loading...
+										  </div>
+									  </div>
+								  }
+							  >
+								<HomeScreen />
+							  </Suspense>) : (
+              				<Redirect to="/login" /> 
+            )}
+          	</Route>
+
 					<Route path="/login">
 						<Suspense
 							fallback={
