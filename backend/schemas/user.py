@@ -1,11 +1,9 @@
 # Pydantic model
 
 from pydantic import BaseModel
-
+from dataclasses import dataclass
 class UserBase(BaseModel):
     username: str
-    full_name: str
-    email: str
 
 class UserCreate(UserBase):
     password: str
@@ -14,7 +12,7 @@ class UserById(UserBase):
     id: int
     
     class Config:
-        from_attributes = True
+        orm_mode = True 
 
 class UserLogin(BaseModel):
     username: str
@@ -29,4 +27,5 @@ class UserByName(UserBase):
 class UserUpdate:
     pass
 
-
+class request_body(BaseModel):
+    input_text :  str
