@@ -8,6 +8,7 @@ from schemas import user
 
 ModelType = TypeVar("ModelType", bound=Base)
 UserType = TypeVar("UserType", bound=User)
+DocumentType = TypeVar("DocumentType", bound=models.Document)
 CreateSchemaType = TypeVar("CreateSchemaType", bound=BaseModel)
 UpdateSchemaType = TypeVar("UpdateSchemaType", bound=BaseModel)
 
@@ -76,6 +77,12 @@ class UserCRUD:
         return db.query(self.model).filter(self.model.email == email).first()
     def list_all_user(self, db: Session) -> List[UserType]:
         return db.query(self.model).all()
+    
+class DocumentCRUD:
+    def __init__(self, model: Type[UserType]):
+        self.model = model
+    def get_by_user_id(self, db: Session, user_id: int) -> Optional[DocumentType]:
+        return db.query(self.model).filter(self.model.user_id == user_id).first()
     
 
     

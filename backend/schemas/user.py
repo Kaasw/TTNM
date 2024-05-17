@@ -1,7 +1,5 @@
-# Pydantic model
-
 from pydantic import BaseModel
-from dataclasses import dataclass
+
 class UserBase(BaseModel):
     username: str
 
@@ -12,7 +10,7 @@ class UserById(UserBase):
     id: int
     
     class Config:
-        orm_mode = True 
+        orm_mode = True
 
 class UserLogin(BaseModel):
     username: str
