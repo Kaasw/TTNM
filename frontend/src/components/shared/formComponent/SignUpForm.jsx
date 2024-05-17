@@ -34,7 +34,7 @@ export default function SignUpForm() {
 		if (methods.watch("password") !== methods.watch("confirmPassword")) {
 			methods.setError("confirmPassword", {
 				type: "manual",
-				message: "Mật khẩu không khớp",
+				message: "Password not matched",
 			});
 			return false;
 		}
@@ -56,14 +56,14 @@ export default function SignUpForm() {
 		);
 		if (respond) {
 			if (respond.status === 200) {
-				toast.success("Đăng ký thành công");
+				toast.success("Sign up succeeded");
 				setTimeout(() => {
 					window.location.href = "/login";
 				}, 1000);
 			} else if (respond.status === 500) {
-				toast.error("Đăng ký thất bại, tên đăng nhập đã tồn tại");
+				toast.error("Username already existed");
 			} else {
-				toast.error("Đăng ký thất bại, xin hãy thử lại");
+				toast.error("Sign up failed, try again");
 			}
 		}
 		cleanUp();
@@ -83,7 +83,7 @@ export default function SignUpForm() {
 						onClick={onSubmit}
 						className="bg-[#F8C70E] hover:bg-[#000000d0] text-[#000000] hover:text-[#F8C70E] font-semibold rounded-md py-2 ml-3 w-full"
 					>
-						Đăng ký
+						Sign up
 					</button>
 				</div>
 			</form>

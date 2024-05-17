@@ -19,7 +19,7 @@ const NavigationBar = () => {
 
 	const handleLogout = () => {
 		localStorage.removeItem("token");
-		toast.success("Đăng xuất thành công");
+		toast.success("Logged out");
 		window.location.href = "/";
 	};
 
@@ -28,7 +28,7 @@ const NavigationBar = () => {
 			key: "1",
 			label: (
 				<a rel="noopener noreferrer" href="/login">
-					Đăng nhập
+					Login
 				</a>
 			),
 		},
@@ -36,7 +36,7 @@ const NavigationBar = () => {
 			key: "2",
 			label: (
 				<a rel="noopener noreferrer" href="/signup">
-					Đăng ký
+					Sign Up
 				</a>
 			),
 		},
@@ -47,13 +47,13 @@ const NavigationBar = () => {
 			key: "3",
 			label: (
 				<a rel="noopener noreferrer" href="/profile">
-					Tài khoản
+					Account
 				</a>
 			),
 		},
 		{
 			key: "4",
-			label: <button onClick={handleLogout}>Đăng xuất</button>,
+			label: <button onClick={handleLogout}>Log Out</button>,
 		},
 	];
 
@@ -62,17 +62,17 @@ const NavigationBar = () => {
 	return (
 		<nav className="sticky w-full top-0 z-10 flex justify-between items-center h-18 mx-auto px-4 text-black bg-[#F8C70E]">
 			<h1 className="text-3xl font-mono font-bold p-4 text-[#000000]">
-				<a className="hover:text-[#FFF5D6]" href="/">ADHDApp</a>
+				<a className="hover:text-[#FFF5D6]" href="/">ReadEasy</a>
 			</h1>
 
 			<div className="hidden md:flex">
 				<ul className="flex font-mono text-xl">
 					<li className="p-4">
-						<a className="hover:text-[#FFF5D6]" href="/">Trang chủ</a>
+						<a className="hover:text-[#FFF5D6]" href="/">Home</a>
 					</li>
 
 					<li className="p-4">
-						<a className="hover:text-[#FFF5D6]" href="/contact">Liên hệ</a>
+						<a className="hover:text-[#FFF5D6]" href="/contact">Contact</a>
 					</li>
 				</ul>
 			</div>
@@ -112,7 +112,7 @@ const NavigationBar = () => {
 				}
 			>
 				<h1 className="text-3xl font-mono font-bold p-4 text-[#000000]">
-					Keebi3.
+					ReadEasy
 				</h1>
 				<ul className="p-2 font-mono">
 					<li className="p-4 border-b border-[#F2D15D]">Home</li>

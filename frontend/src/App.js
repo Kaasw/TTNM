@@ -12,7 +12,7 @@ const MyToast = lazy(() => import("./components/shared/MyToast"));
 
 function App() {
 	useEffect(() => {
-		document.title = "ADHD";
+		document.title = "ReadEasy";
 	}, []);
 
 	return (
