@@ -2,8 +2,6 @@ import React from "react";
 import { Input } from "./Input";
 import { FormProvider, set, useForm } from "react-hook-form";
 import {
-	fullNameValidation,
-	emailValidation,
 	userNameValidation,
 	passwordValidation,
 	confirmPasswordValidation
@@ -20,16 +18,14 @@ export default function SignUpForm() {
 	const [signupField, setSignupField] = useState({
 		password: "",
 		username: "",
-		email: "",
-		fullname: ""
+
 	});
 
 	function cleanUp() {
 		setSignupField({
 			password: "",
 			username: "",
-			email: "",
-			fullname: ""
+		
 		});
 		methods.reset();
 	}
@@ -50,17 +46,13 @@ export default function SignUpForm() {
 		setSignupField(
 			Object.assign(signupField, {
 				password: data.password,
-				username: data.username,
-				email: data.email,
-				fullname: data.fullname,
+				username: data.username
 			})
 		);
 
 		let respond = await signupAPI(
 			signupField.password,
-			signupField.username,
-			signupField.email,
-			signupField.fullname
+			signupField.username
 		);
 		if (respond) {
 			if (respond.status === 200) {
@@ -80,12 +72,6 @@ export default function SignUpForm() {
 	return (
 		<FormProvider {...methods}>
 			<form onSubmit={(e) => e.preventDefault()} noValidate>
-				<Input {...fullNameValidation} />
-				<div className="grid grid-cols-2 gap-4">
-					<div className="col-span-1">
-						<Input {...emailValidation} />
-					</div>
-				</div>
 				<Input {...userNameValidation} />
 				<Input {...passwordValidation} />
 				<Input {...confirmPasswordValidation} />

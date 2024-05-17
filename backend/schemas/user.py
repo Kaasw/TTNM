@@ -4,7 +4,6 @@ from pydantic import BaseModel
 from dataclasses import dataclass
 class UserBase(BaseModel):
     username: str
-    email: str
 
 class UserCreate(UserBase):
     password: str
