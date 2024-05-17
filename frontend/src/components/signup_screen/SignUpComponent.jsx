@@ -16,12 +16,12 @@ export default function SignUpComponent() {
 			</div>
 
 			<div className="lg:px-36 md:px-52 sm:px-20 px-8 w-full lg:w-1/2 font-mono">
-				<h1 className="text-2xl font-semibold mb-4">Đăng ký người dùng mới</h1>
+				<h1 className="text-2xl font-semibold mb-4">Sign up new user</h1>
 				<SignUpForm />
 				<div className="mb-6 text-center pt-5 text-black">
-					Đã có tài khoản?{" "}
+					Already have an accout?{" "}
 					<a href="/login" className="hover:underline">
-						<span className="font-semibold">Đăng nhập ngay!</span>
+						<span className="font-semibold">Login now!</span>
 					</a>
 				</div>
 			</div>

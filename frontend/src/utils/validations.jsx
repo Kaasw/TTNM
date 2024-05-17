@@ -12,89 +12,58 @@ export const isFormInvalid = (err) => {
 	return false;
 };
 
-export const fullNameValidation = {
-	name: "fullname",
-	label: "Họ và tên",
-	type: "text",
-	id: "fullname",
-	placeholder: "Hãy nhập họ và tên",
-	validation: {
-		required: {
-			value: true,
-			message: "Không được để trống",
-		},
-	},
-};
-
-export const emailValidation = {
-	name: "email",
-	label: "Email",
-	type: "email",
-	id: "email",
-	placeholder: "Hãy nhập email",
-	validation: {
-		required: {
-			value: true,
-			message: "Không được để trống",
-		},
-		pattern: {
-			value: /\S+@\S+\.\S+/,
-			message: "Hãy nhập đúng định dạng email",
-		},
-	},
-};
 
 
 export const userNameValidation = {
 	name: "username",
-	label: "Tên đăng nhập",
+	label: "Username",
 	type: "text",
 	id: "username",
-	placeholder: "Hãy nhập tên đăng nhập",
+	placeholder: "Type in username",
 	validation: {
 		required: {
 			value: true,
-			message: "Không được để trống",
+			message: "Must not be empty",
 		},
 		minLength: {
 			value: 6,
-			message: "Cần có ít nhất 6 ký tự",
+			message: "Need at least 6 characters",
 		},
 	},
 };
 
 export const passwordValidation = {
 	name: "password",
-	label: "Mật khẩu",
+	label: "Password",
 	type: "password",
 	id: "password",
-	placeholder: "Hãy nhập mật khẩu",
+	placeholder: "Type in password",
 	validation: {
 		required: {
 			value: true,
-			message: "Không được để trống",
+			message: "Must not be empty",
 		},
 		minLength: {
 			value: 6,
-			message: "Cần có ít nhất 6 ký tự",
+			message: "Need at least 6 characters",
 		},
 		pattern: {
 			value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
-			message: "Cần có chữ hoa, chữ thường và số",
+			message: "Password must contain at least one uppercase letter, one lowercase letter and one number",
 		},
 	},
 };
 
 export const confirmPasswordValidation = {
 	name: "confirmPassword",
-	label: "Xác nhận mật khẩu",
+	label: "Confirm Password",
 	type: "password",
 	id: "confirmPassword",
-	placeholder: "Hãy nhập lại mật khẩu",
+	placeholder: "Type in password again",
 	validation: {
 		required: {
 			value: true,
-			message: "Không được để trống",
+			message: "Must not be empty",
 		},
 	},
 };

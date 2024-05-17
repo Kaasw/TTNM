@@ -12,12 +12,12 @@ export default function LoginScreen() {
 				/>
 			</div>
 			<div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2 font-mono">
-				<h1 className="text-2xl font-semibold mb-4">Đăng nhập</h1>
+				<h1 className="text-2xl font-semibold mb-4">Login</h1>
 				<LoginForm />
 				<div className="mt-6 text-black-500 text-center">
-					Chưa có tài khoản?{" "}
+					No account?{" "}
 					<a href="/signup" className="hover:underline font-bold">
-						Đăng ký ngay
+						Sign up now
 					</a>
 				</div>
 			</div>
