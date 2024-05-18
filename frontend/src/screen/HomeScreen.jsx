@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ReadHD from "../components/home_screen/HomeScreen";
+import HomeScreenComponent from "../components/home_screen/HomeScreenComponent";
 
 export default function HomeScreen() {
 
@@ -9,7 +9,7 @@ export default function HomeScreen() {
 
 	return (
 		<div>
-			<ReadHD/>
+			<HomeScreenComponent/>
 		</div>
 	);
 }
