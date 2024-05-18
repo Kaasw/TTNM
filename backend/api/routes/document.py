@@ -44,6 +44,15 @@ def get_order_by_customer(user_id: int, db: Session = Depends(deps.get_db)):
             detail=error,
         )
 
+@router.get("/{document_id}", response_model=DocumentById)
+def get_document_by_id(document_id: int, db: Session = Depends(deps.get_db)):
+    document = crud.document.get(db, id=document_id)
+    if not document:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Document with ID {document_id} not found",
+        )
+    return document
 
 
 

@@ -18,7 +18,6 @@ function ReadHD() {
     const response = createDocument(textContent, inputFieldValue.current.user_id);
     console.log(response);  
     
-    
   }
 
   const inputFieldValue = useRef({
@@ -75,9 +74,6 @@ function ReadHD() {
               value={textContent}
               onChange={(e) => setTextContent(e.target.value)}
             />
-            <button className="bg-[#F8C70E] hover:bg-[#000000d0] text-[#000000] hover:text-[#F8C70E] font-semibold rounded-md py-2 px-4 w-30">
-              Add Text 
-            </button>
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" onClick={handleReadNowClick} disabled={!textContent}>
               Read Now
             </button>
