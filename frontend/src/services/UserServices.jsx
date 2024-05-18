@@ -50,3 +50,12 @@ export const createDocument = async (content, user_id) => {
 		return error.response;
 	}
 };
+
+export const readDocument = async (id) => {
+	try {
+		const res = await api.get(`/api/document/${id}`);
+		return res;
+	} catch (error) {
+		return error.response;
+	}
+};
