@@ -32,9 +32,9 @@ function ReadScreenComponent() {
         <div className="flex"> {/* Main content container */}
           
           {/* Reading View Area (Left) */}
-          <div className="flex-1 bg-white shadow-md rounded-lg p-6 mr-8 relative"> 
+          <div className="flex-1 bg-white shadow-md rounded-lg p-6 mr-8 relative min-w-[300px] min-h-[400px]"> 
             <div className="flex justify-between items-center mb-4">
-              <h1 className="text-xl font-bold">Untitled</h1>
+              <h1 className="text-xl font-bold">Reading View</h1>
             </div>
             <div className="whitespace-pre-wrap">
               {text}
