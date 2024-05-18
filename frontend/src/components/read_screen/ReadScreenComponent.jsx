@@ -5,6 +5,7 @@ import { readDocument } from '../../services/UserServices';
 function ReadScreenComponent() {
   const textId = localStorage.getItem("textId");
   const [text, setText] = useState("");
+  const [fontSize, setFontSize] = useState(16);
 
   useEffect(() => {
     const fetchText = async () => {
@@ -27,6 +28,7 @@ function ReadScreenComponent() {
             <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">2</button>
             <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">3</button>
             <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">4</button>
+        
           </div>
         </div>
 
@@ -37,7 +39,7 @@ function ReadScreenComponent() {
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-xl font-bold">Reading View</h1>
             </div>
-            <div className="whitespace-pre-wrap">
+            <div className="whitespace-pre-wrap" >
               {text}
             </div>
           </div>
