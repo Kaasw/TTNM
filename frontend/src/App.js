@@ -4,6 +4,7 @@ import { Layout } from "antd";
 import Footer from "./components/shared/Footer";
 import NavigationBar from "./components/shared/NavigationBar";
 
+const ReadSCreen = lazy(() => import("./screen/ReadScreen"));
 const HomeScreen = lazy(() => import("./screen/HomeScreen"));
 const LoginScreen = lazy(() => import("./screen/LoginScreen"));
 const SignUpScreen = lazy(() => import("./screen/SignUpScreen"));
@@ -41,6 +42,7 @@ function App() {
             )}
           	</Route>
 
+
 					<Route path="/login">
 						<Suspense
 							fallback={
@@ -52,6 +54,20 @@ function App() {
 							}
 						>
 							<LoginScreen />
+						</Suspense>
+					</Route>
+
+					<Route path="/read">
+						<Suspense
+							fallback={
+								<div className="flex h-screen">
+									<div className="font-mono font-bold text-3xl m-auto">
+										Loading...
+									</div>
+								</div>
+							}
+						>
+							<ReadSCreen />
 						</Suspense>
 					</Route>
 

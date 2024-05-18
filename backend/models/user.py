@@ -12,3 +12,4 @@ class User(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     username = Column(String(16), nullable=False, unique=True)
     password = Column(String(32), nullable=False)
+    document = relationship('Document', back_populates='user')

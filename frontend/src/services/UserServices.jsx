@@ -38,3 +38,24 @@ export const signupAPI = async (
 		return error.response;
 	}
 };
+
+export const createDocument = async (content, user_id) => {
+	try {
+		const res = await api.post(`/api/document`, {
+			content: content,
+			user_id: user_id,
+		});
+		return res;
+	} catch (error) {
+		return error.response;
+	}
+};
+
+export const readDocument = async (id) => {
+	try {
+		const res = await api.get(`/api/document/${id}`);
+		return res;
+	} catch (error) {
+		return error.response;
+	}
+};

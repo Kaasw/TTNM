@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import HomeScreenComponent from "../components/home_screen/HomeScreenComponent";
 
 export default function HomeScreen() {
 
@@ -9,10 +9,7 @@ export default function HomeScreen() {
 
 	return (
 		<div>
-		
-			<div className="w-[70%] m-auto font-mono mt-2">
-		
-			</div>
+			<HomeScreenComponent/>
 		</div>
 	);
 }

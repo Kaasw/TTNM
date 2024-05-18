@@ -44,3 +44,5 @@ def predict(data: request_body):
     return res
 
 
+
+

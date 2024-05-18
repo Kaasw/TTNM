@@ -6,6 +6,7 @@ import mysql.connector
 import pymysql
 import models
 from models.user import User, Base
+from models.document import Base as BaseDocument
 
 SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://root:4444@localhost:3306/ttnm"
 

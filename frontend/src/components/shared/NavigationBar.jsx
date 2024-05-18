@@ -20,7 +20,7 @@ const NavigationBar = () => {
 	const handleLogout = () => {
 		localStorage.removeItem("token");
 		toast.success("Logged out");
-		window.location.href = "/";
+		window.location.href = "/login";
 	};
 
 	const userDropdownItems = [
@@ -64,18 +64,6 @@ const NavigationBar = () => {
 			<h1 className="text-3xl font-mono font-bold p-4 text-[#000000]">
 				<a className="hover:text-[#FFF5D6]" href="/">ReadEasy</a>
 			</h1>
-
-			<div className="hidden md:flex">
-				<ul className="flex font-mono text-xl">
-					<li className="p-4">
-						<a className="hover:text-[#FFF5D6]" href="/">Home</a>
-					</li>
-
-					<li className="p-4">
-						<a className="hover:text-[#FFF5D6]" href="/contact">Contact</a>
-					</li>
-				</ul>
-			</div>
 
 			<div className="hidden md:flex">
 				<ul className="flex text-2xl">
