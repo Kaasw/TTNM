@@ -79,10 +79,11 @@ class UserCRUD:
         return db.query(self.model).all()
     
 class DocumentCRUD:
-    def __init__(self, model: Type[UserType]):
+    def __init__(self, model: Type[DocumentType]):
         self.model = model
-    def get_by_user_id(self, db: Session, user_id: int) -> Optional[DocumentType]:
-        return db.query(self.model).filter(self.model.user_id == user_id).first()
+    def get_by_user(self, db: Session, user_id: int) -> List[DocumentType]:
+        return db.query(self.model).filter(self.model.user_id == user_id).all()
+    
     
 
     

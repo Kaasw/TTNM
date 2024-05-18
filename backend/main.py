@@ -31,9 +31,6 @@ app.mount("/api", api_router, name="api")
 
 
 
-@app.get("/{full_path:path}")
-async def catch_all(full_path: str):
-    return FileResponse("../frontend/build/index.html")
 
 if __name__ == "__main__":
     import uvicorn

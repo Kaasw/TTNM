@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ReadHD from "../components/home_screen/HomeScreen";
 
 export default function HomeScreen() {
 
@@ -8,10 +9,7 @@ export default function HomeScreen() {
 
 	return (
 		<div>
-		
-			<div className="w-[70%] m-auto font-mono mt-2">
-		
-			</div>
+			<ReadHD/>
 		</div>
 	);
 }

@@ -24,7 +24,7 @@ function App() {
 				<MyToast />
 				<Switch>
 
-     		<Route exact path="/">
+     		{/* <Route exact path="/">
             			{isLoggedIn ? (
           	   	 			<Suspense
 								  fallback={
@@ -39,7 +39,20 @@ function App() {
 							  </Suspense>) : (
               				<Redirect to="/login" /> 
             )}
-          	</Route>
+          	</Route> */}
+			<Route exact path="/">
+						<Suspense
+							fallback={
+								<div className="flex h-screen">
+									<div className="font-mono font-bold text-3xl m-auto">
+										Loading...
+									</div>
+								</div>
+							}
+						>
+							<HomeScreen />
+						</Suspense>
+					</Route>
 
 					<Route path="/login">
 						<Suspense

@@ -26,6 +26,24 @@ def create_document(document_in: DocumentCreate, db: Session = Depends(deps.get_
                 detail=error,
             )
 
+@router.get("/by_user/{user_id}", response_model=List[DocumentById])
+def get_order_by_customer(user_id: int, db: Session = Depends(deps.get_db)):
+    document = crud.documentInteract.get_by_user(db, user_id=user_id)
+    if not document:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Document with user ID {user_id} not found",
+        )
+    
+    try :
+        return document
+    except SQLAlchemyError as e:
+        error = str(e)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=error,
+        )
+
 
 
 
