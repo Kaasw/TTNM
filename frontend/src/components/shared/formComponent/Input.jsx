@@ -31,7 +31,7 @@ export const Input = ({ label, type, id, placeholder, validation, name }) => {
 			<input
 				type={type}
 				id={id}
-				className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#F8C70E]"
+				className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#7B5804]"
 				placeholder={placeholder}
 				{...register(name, validation)}
 			/>

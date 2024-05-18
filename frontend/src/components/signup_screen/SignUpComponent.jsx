@@ -2,7 +2,7 @@ import React from "react";
 import SignUpForm from "../shared/formComponent/SignUpForm";
 
 const inputStyle =
-	"w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#F8C70E]";
+	"w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#7B5804]";
 
 export default function SignUpComponent() {
 	return (

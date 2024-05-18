@@ -81,7 +81,7 @@ export default function SignUpForm() {
 				<div className="flex">
 					<button
 						onClick={onSubmit}
-						className="bg-[#F8C70E] hover:bg-[#000000d0] text-[#000000] hover:text-[#F8C70E] font-semibold rounded-md py-2 ml-3 w-full"
+						className="bg-[#7B5804] hover:bg-[#000000d0] text-[#000000] hover:text-[#7B5804] font-semibold rounded-md py-2 ml-3 w-full"
 					>
 						Sign up
 					</button>
