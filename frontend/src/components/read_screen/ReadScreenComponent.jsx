@@ -7,6 +7,7 @@ import SaveIcon from "@heroicons/react/24/outline/FolderIcon";
 
 function ReadScreenComponent() {
   const textId = localStorage.getItem("textId");
+  const [isBionicMode, setIsBionicMode] = React.useState(false);
   const [text, setText] = useState("");
   const [fontSize, setFontSize] = useState(16);
 
@@ -27,6 +28,14 @@ function ReadScreenComponent() {
 
   const handleZoomOut = () => {
     setFontSize(prevSize => Math.max(prevSize - 2, 12)); // Min font size 12px
+  };
+
+  const applyBionicReading = (text) => {
+    return text
+      .split(' ')
+      .map(word => word.slice(0, Math.ceil(word.length / 2)) + word.slice(Math.ceil(word.length / 2))) // Split each word in half
+      .map(word => `<span style="font-weight: bold">${word.slice(0, 1)}</span>${word.slice(1)}`) // Bold the first half of each word
+      .join(' ');
   };
 
   return (
@@ -67,6 +76,12 @@ function ReadScreenComponent() {
             >
                 <SaveIcon className="w-6 h-6" />
             </button>
+            <button
+                onClick={() => setIsBionicMode(!isBionicMode)}
+                className="bg-gray-200 p-2 rounded-md hover:bg-gray-300"
+              >
+                {isBionicMode ? "Normal Mode" : "Bionic Mode"}
+            </button>
         
 
           </div>
@@ -76,14 +91,16 @@ function ReadScreenComponent() {
           
           {/* Reading View Area (Left) */}
 
-          <div className={`flex-1 bg-white shadow-md rounded-lg p-6 mr-8 relative min-w-[600px] min-h-[500px]`} style={{ fontSize: `${fontSize}px` }}> 
+          <div className={`flex-1 bg-white shadow-md rounded-lg p-6 mr-8 relative min-w-[600px] min-h-[500px] max-h-[600px] overflow-y-auto` } style={{ fontSize: `${fontSize}px` }}> 
 
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-xl font-bold">Reading View</h1>
             </div>
-            <div className="whitespace-pre-wrap" >
-              {text}
-            </div>
+            <div className="whitespace-pre-wrap" dangerouslySetInnerHTML={{
+              __html: isBionicMode ? applyBionicReading(text) : text
+          }}>
+            
+          </div>
           </div>
 
           {/* Sidebar (Summary/Notes - Right) */}
