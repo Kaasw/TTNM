@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { readDocument } from '../../services/UserServices';
 
-
-
-
 function ReadScreenComponent() {
-
-
-  const textId = localStorage.getItem("textId")
+  const textId = localStorage.getItem("textId");
   const [text, setText] = useState("");
 
   useEffect(() => {
@@ -18,66 +13,49 @@ function ReadScreenComponent() {
       }
     };
     fetchText();
-  }
-  , [textId]);
+  }, [textId]);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-5xl mx-auto flex"> {/* Main content container */}
+    <div className="min-h-screen bg-gray-100 p-8 flex justify-center items-center">
+      <div className="max-w-5xl mx-auto flex flex-col"> 
 
-        {/* Sidebar (Summary/Notes) */}
-        <div className="w-96 mr-8"> 
-          <div className="mb-4 p-4 bg-white rounded-lg shadow">
-            <h2 className="text-lg font-semibold mb-2">Summary</h2>
-            {/* ... content for the Summary section ... */}
-          </div>
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-lg font-semibold mb-2">Notes</h2>
-            {/* ... content for the Notes section ... */}
+        {/* Button List (Top, now on the Left) */}
+        <div className="w-full mb-8"> 
+          <div className="flex space-x-3">  
+            <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">Hi</button>
+            <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">2</button>
+            <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">3</button>
+            <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">4</button>
           </div>
         </div>
 
-        {/* Reading View Area */}
-        <div className="flex-1 bg-white shadow-md rounded-lg p-6 relative"> {/* Relative for icon positioning */}
-
-          {/* Header */}
-          <div className="flex justify-between items-center mb-4">
-            <h1 className="text-xl font-bold">Untitled</h1>
-            <div className="flex items-center">
-           
-              
+        <div className="flex"> {/* Main content container */}
+          
+          {/* Reading View Area (Left) */}
+          <div className="flex-1 bg-white shadow-md rounded-lg p-6 mr-8 relative"> 
+            <div className="flex justify-between items-center mb-4">
+              <h1 className="text-xl font-bold">Untitled</h1>
+            </div>
+            <div className="whitespace-pre-wrap">
+              {text}
             </div>
           </div>
 
-          {/* Text Content */}
-          <div className="whitespace-pre-wrap">
-            {text}
+          {/* Sidebar (Summary/Notes - Right) */}
+          <div className="w-96"> 
+            <div className="mb-4 p-4 bg-white rounded-lg shadow">
+              <h2 className="text-lg font-semibold mb-2">Summary</h2>
+              {/* ... content for the Summary section ... */}
+            </div>
+            <div className="p-4 bg-white rounded-lg shadow">
+              <h2 className="text-lg font-semibold mb-2">Notes</h2>
+              {/* ... content for the Notes section ... */}
+            </div>
           </div>
-
-          {/* Vertical Button List (Positioned) */}
-          
         </div>
-
-        <div className="absolute top-20 right-8 flex flex-col space-y-3">
-            <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">
-              Hi
-            </button>
-            <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">
-              2
-            </button>
-            <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">
-              3
-            </button>
-            <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">
-              4
-            </button>
-          </div> 
+        
       </div>
     </div>
-
-
-    
-    
   );
 }
 
