@@ -23,7 +23,7 @@ port = os.getenv("MYSQL_SERVICE_PORT")
 database = os.getenv("MYSQL_DATABASE")
 
 
-SQLALCHEMY_DATABASE_URL = f"mysql+mysqlconnector://root:12345678@localhost:3306/ttnm"
+SQLALCHEMY_DATABASE_URL = f"mysql+mysqlconnector://{username}:{password}@{host}:{port}/{database}"
 
 
 
