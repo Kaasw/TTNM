@@ -7,6 +7,7 @@ function ReadScreenComponent() {
   const [text, setText] = useState("");
   const [fontSize, setFontSize] = useState(16);
 
+
   useEffect(() => {
     const fetchText = async () => {
       const response = await readDocument(textId);
@@ -17,6 +18,14 @@ function ReadScreenComponent() {
     fetchText();
   }, [textId]);
 
+  const handleZoomIn = () => {
+    setFontSize(prevSize => Math.min(prevSize + 2, 32)); // Max font size 32px
+  };
+
+  const handleZoomOut = () => {
+    setFontSize(prevSize => Math.max(prevSize - 2, 12)); // Min font size 12px
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-8 flex justify-center items-center">
       <div className="max-w-5xl mx-auto flex flex-col"> 
@@ -24,18 +33,20 @@ function ReadScreenComponent() {
         {/* Button List (Top, now on the Left) */}
         <div className="w-full mb-8"> 
           <div className="flex space-x-3">  
-            <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">Hi</button>
-            <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">2</button>
-            <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">3</button>
-            <button className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">4</button>
-        
+            <button onClick={handleZoomIn} className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">
+              Zoom In
+            </button>
+            <button onClick={handleZoomOut} className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">
+              Zoom Out
+            </button>
+            {/* ... (other buttons) ... */}
           </div>
         </div>
 
         <div className="flex"> {/* Main content container */}
           
           {/* Reading View Area (Left) */}
-          <div className="flex-1 bg-white shadow-md rounded-lg p-6 mr-8 relative min-w-[600px] min-h-[500px]"> 
+          <div className={`flex-1 bg-white shadow-md rounded-lg p-6 mr-8 relative min-w-[600px] min-h-[500px]`} style={{ fontSize: `${fontSize}px` }}> 
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-xl font-bold">Reading View</h1>
             </div>
