@@ -70,7 +70,7 @@ def predict(data: request_body):
     return res
 
 @router.delete("/{id}", response_model=int)
-def delete_product(id: int, db: Session = Depends(deps.get_db)):
+def delete_document(id: int, db: Session = Depends(deps.get_db)):
     document = crud.document.get(db, id=id)
     if not document:
         raise HTTPException(

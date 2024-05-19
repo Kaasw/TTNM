@@ -55,9 +55,6 @@ function ReadScreenComponent() {
   }
 
 
-
-
-
   return (
     <div className="min-h-screen bg-gray-100 p-8 flex justify-center items-center">
       <div className="max-w-5xl mx-auto flex flex-col"> 
