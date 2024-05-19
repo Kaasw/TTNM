@@ -39,11 +39,12 @@ export const signupAPI = async (
 	}
 };
 
-export const createDocument = async (content, user_id) => {
+export const createDocument = async (content, user_id, summary) => {
 	try {
 		const res = await api.post(`/api/document`, {
 			content: content,
 			user_id: user_id,
+			summary: summary,
 		});
 		return res;
 	} catch (error) {
@@ -54,6 +55,28 @@ export const createDocument = async (content, user_id) => {
 export const readDocument = async (id) => {
 	try {
 		const res = await api.get(`/api/document/${id}`);
+		return res;
+	} catch (error) {
+		return error.response;
+	}
+};
+
+export const getAllDocumentAPI = async () => {
+	const token = localStorage.getItem("token");
+	const headers = { Authorization: `Bearer ${token}` };
+	try {
+		const res = await api.get("/api/document", { headers });
+		return res;
+	} catch (error) {
+		return error.response;
+	}
+};
+
+export const summarize = async (input_text) => {
+	try {
+		const res = await api.post(`/api/users/predict`, {
+			input_text: input_text,
+		});
 		return res;
 	} catch (error) {
 		return error.response;

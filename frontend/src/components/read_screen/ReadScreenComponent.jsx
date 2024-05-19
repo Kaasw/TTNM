@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { readDocument } from '../../services/UserServices';
+import { summarize } from '../../services/UserServices';
 import IncreaseFontSizeIcon from "@heroicons/react/24/outline/MagnifyingGlassPlusIcon";
 import DecreaseFontSizeIcon from "@heroicons/react/24/outline/MagnifyingGlassMinusIcon";
 import UploadTextIcon from "@heroicons/react/24/outline/ArrowUpTrayIcon";
 import SaveIcon from "@heroicons/react/24/outline/FolderIcon";
+import { set } from 'react-hook-form';
 
 function ReadScreenComponent() {
   const textId = localStorage.getItem("textId");
   const [isBionicMode, setIsBionicMode] = React.useState(false);
   const [text, setText] = useState("");
   const [fontSize, setFontSize] = useState(16);
+  const [summary, setSummary] = useState("");
 
 
   useEffect(() => {
@@ -37,6 +40,23 @@ function ReadScreenComponent() {
       .map(word => `<span style="font-weight: bold">${word.slice(0, 1)}</span>${word.slice(1)}`) // Bold the first half of each word
       .join(' ');
   };
+
+  const saveDocument = async () => {
+    const response = await summarize(text);
+    console.log(response);
+    if (response.status === 200) {
+      console.log("Document saved successfully");
+      setSummary(response.data.input_text);
+
+    } else {
+      console.log("Failed to save document");
+    }
+    
+  }
+
+
+
+
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 flex justify-center items-center">
@@ -73,8 +93,17 @@ function ReadScreenComponent() {
                 //onClick={Save}
                 data-tip="Decrease font size"
                 className="bg-gray-200 p-2 rounded-md hover:bg-gray-300"
+                onClick={saveDocument}
             >
                 <SaveIcon className="w-6 h-6" />
+            </button>
+            <button
+                //onClick={upload}
+                data-tip="Decrease font size"
+                className="bg-gray-200 p-2 rounded-md hover:bg-gray-300"
+                onClick={saveDocument}
+            >
+                <UploadTextIcon className="w-6 h-6" />
             </button>
             <button
                 onClick={() => setIsBionicMode(!isBionicMode)}
@@ -108,6 +137,8 @@ function ReadScreenComponent() {
             <div className="mb-4 p-4 bg-white rounded-lg shadow">
               <h2 className="text-lg font-semibold mb-2">Summary</h2>
               {/* ... content for the Summary section ... */}
+              {summary}
+
             </div>
             <div className="p-4 bg-white rounded-lg shadow">
               <h2 className="text-lg font-semibold mb-2">Notes</h2>

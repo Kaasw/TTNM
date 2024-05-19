@@ -38,9 +38,9 @@ def get_user_by_user_id(user_id: int, db: Session = Depends(deps.get_db)):
 
 @router.post('/predict', response_model=request_body)
 def predict(data: request_body):
-    input_model = data.input_text
+    input_model = data.input_text.replace('\n', ' ')  # Remove line breaks
     output = model.summarize(input_model)
-    res = request_body(input_text= output)
+    res = request_body(input_text=output)
     return res
 
 

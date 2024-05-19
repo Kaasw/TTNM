@@ -11,6 +11,7 @@ function HomeScreenComponent() {
   const [uploadedFile, setUploadedFile] = useState(null);
   const fileInputRef = useRef(null);
   const [uploadedFileName, setUploadedFileName] = useState('');
+  const summary = "";
 
   // ... (other functions: handleTabClick, handleReadNowClick) ...
 
@@ -30,7 +31,7 @@ function HomeScreenComponent() {
 
     try {
       const text = await pdfToText(uploadedFile);
-      const response = await createDocument(text, inputFieldValue.current.user_id);
+      const response = await createDocument(text, inputFieldValue.current.user_id, summary);
       console.log(response);
       localStorage.setItem("textId", response.data.id);
       // history.push('/read'); // Navigate to the reading screen after successful upload
@@ -44,7 +45,7 @@ function HomeScreenComponent() {
   };
 
   const handleReadNowClick = async () => {
-    const response = await createDocument(textContent, inputFieldValue.current.user_id);
+    const response = await createDocument(textContent, inputFieldValue.current.user_id, summary);
     console.log(response);
 
     if (response.status === 200) {
@@ -61,7 +62,8 @@ function HomeScreenComponent() {
   const inputFieldValue = useRef({
     content: "",
 		user_id: "",
-    id: ""
+    id: "",
+    summary: "",
 	});
 
   useEffect(() => {
