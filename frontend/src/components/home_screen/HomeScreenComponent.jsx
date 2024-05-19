@@ -3,6 +3,7 @@ import{ useRef } from "react";
 import {useEffect } from "react";
 import pdfToText from 'react-pdftotext';
 import { createDocument } from '../../services/UserServices';
+import { useHistory, useLocation } from 'react-router-dom';
 
 
 function HomeScreenComponent() {
@@ -12,6 +13,10 @@ function HomeScreenComponent() {
   const fileInputRef = useRef(null);
   const [uploadedFileName, setUploadedFileName] = useState('');
   const summary = "";
+  const history = useHistory();
+  const location = useLocation();
+
+  
 
   // ... (other functions: handleTabClick, handleReadNowClick) ...
 
@@ -34,7 +39,8 @@ function HomeScreenComponent() {
       const response = await createDocument(text, inputFieldValue.current.user_id, summary);
       console.log(response);
       localStorage.setItem("textId", response.data.id);
-      // history.push('/read'); // Navigate to the reading screen after successful upload
+      history.push('/read');
+      window.location.reload();
     } catch (error) {
       console.error("Error extracting text from PDF or creating document:", error);
     }
@@ -51,7 +57,8 @@ function HomeScreenComponent() {
     if (response.status === 200) {
 
       localStorage.setItem("textId", response.data.id);
-    
+      history.push('/read');
+      window.location.reload();
       
 
     } else {
