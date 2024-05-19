@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { ConfigProvider, Table, Tooltip } from "antd";
+import { ConfigProvider, Table, Tooltip, Button, Popconfirm } from "antd";
 import { getAllDocumentAPI } from "../../services/UserServices";
+import { deleteDocumentAPI } from "../../services/UserServices";
+import { readDocument } from "../../services/UserServices";
+import { toast } from "react-toastify";
+
 
 export default function HistoryScreenComponent() {
   const [document, setDocument] = useState([]);
+
 
   useEffect(() => {
     getAllDocumentAPI().then((res) => {
@@ -11,16 +16,42 @@ export default function HistoryScreenComponent() {
     });
   }, []);
 
+  const handleReadClick = async (record) => {
+    try {
+      const res = await readDocument(record.id);
+      if (res.status === 200) {
+        localStorage.setItem("textId", record.id); 
+        console.log(record.id);
+        window.open("/read", "_blank");
+      }
+    } catch (error) {
+      // Handle errors here, e.g., show a toast notification
+    }
+  };
+
+  const handleDeleteDocument = async (record) => {
+    try {
+      const res = await deleteDocumentAPI(record.id);
+      if (res.status === 200) {
+        setDocument((prevDocs) => prevDocs.filter((doc) => doc.id !== record.id));
+        toast.success("Document removed successfully!");
+      }
+    } catch (error) {
+      toast.error(`Document removal failed: ${error.response?.data?.message || error.message}`);
+    }
+  };
+
   const columns = [
     {
       title: "Index",
       dataIndex: "id",
-      key: "name",
+      key: "index",  // Assign a unique key
       width: "1px",
     },
     {
       title: "Summary",
       dataIndex: "summary",
+      key: "summary", // Assign a unique key
       width: "160px",
       render: (summary) => (
         <Tooltip title={summary}>
@@ -29,15 +60,30 @@ export default function HistoryScreenComponent() {
       ),
     },
     {
-      title: "Read",
-      dataIndex: "fullname", 
-      width: "10px",
+        title: "Read",
+        key: "read",
+        width: "10px",
+        render: (_, record) => (
+          <Button type="primary" size="small" onClick={() => handleReadClick(record)}>
+            Read
+          </Button>
+        ),
     },
     {
-      title: "Remove",
-      dataIndex: "id", 
-      width: "10px",
-    },
+        title: "Remove",
+        key: "remove",
+        width: "10px",
+        render: (_, record) => (
+          <Popconfirm
+            title="Are you sure you want to remove this document?"
+            onConfirm={() => handleDeleteDocument(record)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button type="primary" danger size="small">Remove</Button>
+          </Popconfirm>
+        ),
+      },
   ];
 
   const onChange = (pagination, filters, sorter, extra) => {};

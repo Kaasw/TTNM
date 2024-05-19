@@ -82,3 +82,12 @@ export const summarize = async (input_text) => {
 		return error.response;
 	}
 };
+
+export const deleteDocumentAPI = async (id) => {
+	try {
+		const res = await api.delete(`/api/document/${id}`);
+		return res;
+	} catch (error) {
+		return error.response;
+	}
+}

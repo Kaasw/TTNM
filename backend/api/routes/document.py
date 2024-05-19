@@ -68,3 +68,20 @@ def predict(data: request_body):
     output = model.summarize(input_model)
     res = request_body(input_text=output)
     return res
+
+@router.delete("/{id}", response_model=int)
+def delete_document(id: int, db: Session = Depends(deps.get_db)):
+    document = crud.document.get(db, id=id)
+    if not document:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Document with ID {id} not found",
+        )
+    try :
+            return crud.document.remove(db, obj=document)
+    except SQLAlchemyError as e:
+        error = str(e)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=error,
+        )
