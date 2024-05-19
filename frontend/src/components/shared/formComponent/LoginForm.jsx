@@ -77,14 +77,15 @@ export default function LoginForm() {
 				{isLogging ? (
 					<button
 						disabled
-						className="bg-[#F8C70E] hover:bg-[#000000d0] text-[#000000] hover:text-[#F8C70E] font-semibold rounded-md py-2 px-4 w-full"
+						className="bg-[#79B4B7] hover:bg-white text-[#000000] hover:text-black font-semibold rounded-md py-2 px-4 w-full"
 					>
 						Logging in ...
 					</button>
 				) : (
 					<button
 						onClick={onSubmit}
-						className="bg-[#F8C70E] hover:bg-[#000000d0] text-[#000000] hover:text-[#F8C70E] font-semibold rounded-md py-2 px-4 w-full"
+						className="bg-[#79B4B7] hover:bg-white text-[#000000] hover:text-black font-semibold rounded-md py-2 px-4 w-full 
+						shadow-lg hover:shadow-2xl active:shadow-xl transition duration-200 transform hover:-translate-y-1 active:translate-y-0 "
 					>
 						Login
 					</button>

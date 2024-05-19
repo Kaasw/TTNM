@@ -6,10 +6,10 @@ const inputStyle =
 
 export default function SignUpComponent() {
 	return (
-		<div className="bg-gray-100 flex justify-center items-center h-screen">
-			<div className="w-1/2 hidden lg:block h-screen">
+		<div className="bg-gray-200 flex justify-center items-center h-screen">
+			<div className="w-2/3 hidden lg:block h-screen">
 				<img
-					src="https://images.unsplash.com/photo-1494459940152-1e911caa8cc5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					src="https://jamesclear.com/wp-content/uploads/2014/07/read-more.jpg"
 					alt="Placeholder"
 					className="object-cover w-full h-full"
 				/>

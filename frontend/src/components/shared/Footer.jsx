@@ -2,10 +2,10 @@ import React from "react";
 
 const Footer = () => {
 	return (
-		<footer className="bg-[#FFF5D6] text-center lg:text-left font-mono">
+		<footer className="bg-[#79B4B7] text-center lg:text-left font-mono">
 			{/* Main container div: holds the entire content of the footer */}
 			<div className="mx-6 py-10 text-center md:text-left">
-				<div className="grid gap-18 md:grid-cols-1 lg:grid-cols-3">
+				<div className="grid gap-18 md:grid-cols-2 lg:grid-cols-3">
 					{/* <!-- Contact section --> */}
 					<div className="ml-10 mt-5 ">
 						<img
@@ -17,9 +17,9 @@ const Footer = () => {
 							ReadEasy 
 						</h6>
 					</div>
-
+					<div></div>
 					{/* <!-- Contact section --> */}
-					<div>
+					<div className="mr-8">
 						<h6 className="mb-2 flex justify-center font-semibold md:justify-start text-xl">
 							Contact
 						</h6>

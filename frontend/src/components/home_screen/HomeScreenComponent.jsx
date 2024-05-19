@@ -4,6 +4,7 @@ import {useEffect } from "react";
 import pdfToText from 'react-pdftotext';
 import { createDocument } from '../../services/UserServices';
 import { useHistory, useLocation } from 'react-router-dom';
+import { color } from 'framer-motion';
 
 
 function HomeScreenComponent() {
@@ -86,21 +87,21 @@ function HomeScreenComponent() {
 
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-gray-200 p-8">
       <div className="max-w-2xl mx-auto bg-white shadow-md rounded-lg p-6">
         {/* Tabs */}
         <div className="flex mb-4">
           <button
-            className={`px-4 py-2 rounded-t-md focus:outline-none ${
-              activeTab === 'addText' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+            className={`px-4 py-2 rounded-t-md focus:outline-none shadow-lg hover:shadow-2xl active:shadow-xl transition duration-200 transform hover:-translate-y-1 active:translate-y-0 ${
+              activeTab === 'addText' ? 'bg-[#79B4B7] text-white font-bold' : 'bg-gray-200 font-bold '
             }`}
             onClick={() => handleTabClick('addText')}
           >
             Add Text
           </button>
           <button
-            className={`px-4 py-2 rounded-t-md focus:outline-none ${
-              activeTab === 'uploadFile' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+            className={`px-4 py-2 rounded-t-md focus:outline-none shadow-lg hover:shadow-2xl active:shadow-xl transition duration-200 transform hover:-translate-y-1 active:translate-y-0 ${
+              activeTab === 'uploadFile' ? 'bg-[#79B4B7] text-white font-bold' : 'bg-gray-200 font-bold '
             }`}
             onClick={() => handleTabClick('uploadFile')}
           >
@@ -109,20 +110,20 @@ function HomeScreenComponent() {
         </div>
 
         <h1 className="text-2xl font-bold mb-4">ReadEasy</h1>
-        <p className="text-gray-600 mb-6">A reading support helpkit for ADHD users.</p>
+        <p className="text-gray-600 mb-6">A reading tool for LD and ADHD individuals</p>
 
         {/* Tab Content (Conditional Rendering) */}
         {activeTab === 'addText' && (
           <div>
             <textarea
-              className="w-full p-2 border rounded-md mb-4"
-              placeholder="Enter your text here..."
+              className="w-full p-2 border rounded-md mb-4 placeholder-black bg-gray-200"
+              placeholder={"Enter your text here..."}
               rows={15}
               cols={40}
               value={textContent}
               onChange={(e) => setTextContent(e.target.value)}
             />
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" onClick={handleReadNowClick} disabled={!textContent}>
+            <button className="bg-[#79B4B7] hover:bg-[#79B4B7] font-bold text-white py-2 px-4 rounded shadow-lg hover:shadow-2xl active:shadow-xl transition duration-200 transform hover:-translate-y-1 active:translate-y-0" onClick={handleReadNowClick} disabled={!textContent}>
               Read Now
             </button>
           </div>
@@ -139,13 +140,13 @@ function HomeScreenComponent() {
             />
             <div className="flex space-x-3">  {/* Button container */}
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="bg-[#79B4B7] hover:bg-[#79B4B7] font-bold text-white py-2 px-4 rounded shadow-lg hover:shadow-2xl active:shadow-xl transition duration-200 transform hover:-translate-y-1 active:translate-y-0"
                 onClick={() => fileInputRef.current.click()} 
               >
                 Upload File
               </button>
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="bg-[#79B4B7] hover:bg-[#79B4B7] font-bold text-white py-2 px-4 rounded shadow-lg hover:shadow-2xl active:shadow-xl transition duration-200 transform hover:-translate-y-1 active:translate-y-0"
                 onClick={handleReadNowClickAtTab}
                 disabled={!uploadedFile} // Disable if no file is uploaded
               >

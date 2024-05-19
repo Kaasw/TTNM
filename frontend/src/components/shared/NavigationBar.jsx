@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import {
 	AiOutlineSearch,
@@ -9,10 +9,19 @@ import {
 import { ConfigProvider, Dropdown, Space } from "antd";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import '../../index.scss';
 
 const NavigationBar = () => {
 	const [nav, setNav] = useState(true);
 	const isLogin = localStorage.getItem("token");
+	const navbarRef = useRef(null);
+	const [lineheight, setLineHeight] = useState(0);
+
+	useEffect(() => {
+		if (navbarRef.current) {
+		  setLineHeight(navbarRef.current.offsetHeight);
+		}
+	  }, []);
 
 	const handleNav = () => {
 		setNav(!nav);
@@ -45,14 +54,6 @@ const NavigationBar = () => {
 
 	const userDropdownItems2 = [
 		{
-			key: "3",
-			label: (
-				<a rel="noopener noreferrer" href="/profile">
-					Account
-				</a>
-			),
-		},
-		{
 			key: "4",
 			label: <button onClick={handleLogout}>Log Out</button>,
 		},
@@ -61,24 +62,42 @@ const NavigationBar = () => {
 
 
 	return (
-		<nav className="sticky w-full top-0 z-10 flex justify-between items-center h-18 mx-auto px-4 text-black bg-[#F8C70E]">
-			<h1 className="text-3xl font-mono font-bold p-4 text-[#000000]">
-				<a className="hover:text-[#FFF5D6]" href="/">ReadEasy</a>
+		<nav ref={navbarRef} className="sticky w-full top-0 z-10 flex items-center h-18 px-4 text-black bg-[#79B4B7]">
+			<h1 className="text-3xl font-mono font-family p-4 text-[#000000]">
+				<a className="hover:text-[#FFF5D6] font-bold" href="/">ReadEasy</a>
 			</h1>
+			<div 
+				className="hidden md:block border-l border-gray-300 mx-5"
+				style={{ height: lineheight }} 
+			></div>
+			{isLogin && (
 			<div className="hidden md:flex">
 				<ul className="flex font-mono text-xl">
 					<li className="p-4">
-						<a className="hover:text-[#FFF5D6]" href="/home">Home</a>
+						<a className="hover:text-[#FFF5D6] font-bold ml-30" href="/home">Home</a>
 					</li>
+					<div 
+						className="hidden md:block border-l border-gray-300 mx-5"
+						style={{ height: lineheight }} 
+					></div>
 					<li className="p-4">
-						<a className="hover:text-[#FFF5D6]" href="/read">Read</a>
+						<a className="hover:text-[#FFF5D6] font-bold" href="/read">Read</a>
 					</li>
+					<div 
+						className="hidden md:block border-l border-gray-300 mx-5"
+						style={{ height: lineheight }} 
+					></div>
 					<li className="p-4">
-						<a className="hover:text-[#FFF5D6]" href="/history">History</a>
+						<a className="hover:text-[#FFF5D6] font-bold" href="/history">History</a>
 					</li>
+					<div 
+						className="hidden md:block border-l border-gray-300 mx-5"
+						style={{ height: lineheight }} 
+					></div>
 				</ul>
 			</div>
-			<div className="hidden md:flex">
+			)}
+			<div className="hidden md:flex ml-auto">
 				<ul className="flex text-2xl">
   
 					<li className="p-2">
