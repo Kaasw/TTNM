@@ -20,6 +20,7 @@ function ReadScreenComponent() {
       const response = await readDocument(textId);
       if (response.status === 200) {
         setText(response.data.content);
+        setSummary(response.data.summary);
       }
     };
     fetchText();
