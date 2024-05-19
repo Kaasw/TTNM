@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { ConfigProvider, Table, Tooltip, Button, Popconfirm } from "antd";
 import { getAllDocumentAPI } from "../../services/UserServices";
 import { deleteDocumentAPI } from "../../services/UserServices";
+import { readDocument } from "../../services/UserServices";
 import { toast } from "react-toastify";
 
 
 export default function HistoryScreenComponent() {
   const [document, setDocument] = useState([]);
+
 
   useEffect(() => {
     getAllDocumentAPI().then((res) => {
@@ -14,9 +16,18 @@ export default function HistoryScreenComponent() {
     });
   }, []);
 
-  const handleReadClick = (record) => {
-    console.log(record);
-  }
+  const handleReadClick = async (record) => {
+    try {
+      const res = await readDocument(record.id);
+      if (res.status === 200) {
+        localStorage.setItem("textId", record.id); 
+        console.log(record.id);
+        window.open("/read", "_blank");
+      }
+    } catch (error) {
+      // Handle errors here, e.g., show a toast notification
+    }
+  };
 
   const handleDeleteDocument = async (record) => {
     try {
@@ -49,12 +60,14 @@ export default function HistoryScreenComponent() {
       ),
     },
     {
-      title: "Read",
-      key: "read",    // Assign a unique key
-      width: "10px",
-      render: (_, record) => (
-        <Button type="primary" size="small" onClick={handleReadClick}>Read</Button>
-      ),
+        title: "Read",
+        key: "read",
+        width: "10px",
+        render: (_, record) => (
+          <Button type="primary" size="small" onClick={() => handleReadClick(record)}>
+            Read
+          </Button>
+        ),
     },
     {
         title: "Remove",
