@@ -2,7 +2,7 @@ from typing import List
 from fastapi import APIRouter, HTTPException, status, UploadFile, Depends, Form
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from schemas import UserCreate, UserById, UserBase, UserLogin, request_body
+from schemas import UserCreate, UserById, UserBase, UserLogin
 from fastapi_login import LoginManager
 from fastapi_login.exceptions import InvalidCredentialsException
 from sqlalchemy.exc import SQLAlchemyError
@@ -36,12 +36,6 @@ def get_user_by_user_id(user_id: int, db: Session = Depends(deps.get_db)):
         )
     return user
 
-@router.post('/predict', response_model=request_body)
-def predict(data: request_body):
-    input_model = data.input_text.replace('\n', ' ')  # Remove line breaks
-    output = model.summarize(input_model)
-    res = request_body(input_text=output)
-    return res
 
 
 

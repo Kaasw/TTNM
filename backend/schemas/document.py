@@ -7,6 +7,7 @@ class DocumentBase(BaseModel):
 
 class DocumentCreate(DocumentBase):
     pass
+    
 
 class DocumentById(DocumentBase):
     id: int

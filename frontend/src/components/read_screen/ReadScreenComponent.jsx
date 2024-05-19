@@ -90,21 +90,14 @@ function ReadScreenComponent() {
                 <DecreaseFontSizeIcon className="w-6 h-6" />
             </button>
             <button
-                //onClick={Save}
+                //onClick={Summary}
                 data-tip="Decrease font size"
                 className="bg-gray-200 p-2 rounded-md hover:bg-gray-300"
                 onClick={saveDocument}
             >
                 <SaveIcon className="w-6 h-6" />
             </button>
-            <button
-                //onClick={upload}
-                data-tip="Decrease font size"
-                className="bg-gray-200 p-2 rounded-md hover:bg-gray-300"
-                onClick={saveDocument}
-            >
-                <UploadTextIcon className="w-6 h-6" />
-            </button>
+        
             <button
                 onClick={() => setIsBionicMode(!isBionicMode)}
                 className="bg-gray-200 p-2 rounded-md hover:bg-gray-300"
