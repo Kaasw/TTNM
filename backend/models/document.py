@@ -9,6 +9,7 @@ class Document(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     content = Column(Text(16000000), nullable=False)
+    summary = Column(Text(16000000), nullable=True)
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     user = relationship('User', back_populates='document')
 

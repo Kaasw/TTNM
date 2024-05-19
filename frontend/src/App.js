@@ -8,6 +8,7 @@ const ReadSCreen = lazy(() => import("./screen/ReadScreen"));
 const HomeScreen = lazy(() => import("./screen/HomeScreen"));
 const LoginScreen = lazy(() => import("./screen/LoginScreen"));
 const SignUpScreen = lazy(() => import("./screen/SignUpScreen"));
+const HistoryScreen = lazy(() => import("./screen/HistoryScreen"));
 const MyToast = lazy(() => import("./components/shared/MyToast"));
 
 
@@ -54,6 +55,20 @@ function App() {
 							}
 						>
 							<LoginScreen />
+						</Suspense>
+					</Route>
+
+					<Route path="/history">
+						<Suspense
+							fallback={
+								<div className="flex h-screen">
+									<div className="font-mono font-bold text-3xl m-auto">
+										Loading...
+									</div>
+								</div>
+							}
+						>
+							<HistoryScreen />
 						</Suspense>
 					</Route>
 

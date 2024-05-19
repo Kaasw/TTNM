@@ -27,7 +27,7 @@ def create_document(document_in: DocumentCreate, db: Session = Depends(deps.get_
             )
 
 @router.get("/by_user/{user_id}", response_model=List[DocumentById])
-def get_order_by_customer(user_id: int, db: Session = Depends(deps.get_db)):
+def get_document_by_user(user_id: int, db: Session = Depends(deps.get_db)):
     document = crud.documentInteract.get_by_user(db, user_id=user_id)
     if not document:
         raise HTTPException(
@@ -54,6 +54,8 @@ def get_document_by_id(document_id: int, db: Session = Depends(deps.get_db)):
         )
     return document
 
-
+@router.get("/", response_model=List[DocumentById])
+def get_all_document(db: Session = Depends(deps.get_db)):
+    return crud.document.get_all(db)
 
 
