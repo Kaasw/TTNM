@@ -8,6 +8,7 @@ import {
 } from "react-icons/ai";
 import { ConfigProvider, Dropdown, Space } from "antd";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const NavigationBar = () => {
 	const [nav, setNav] = useState(true);
@@ -64,10 +65,22 @@ const NavigationBar = () => {
 			<h1 className="text-3xl font-mono font-bold p-4 text-[#000000]">
 				<a className="hover:text-[#FFF5D6]" href="/">ReadEasy</a>
 			</h1>
-
+			<div className="hidden md:flex">
+				<ul className="flex font-mono text-xl">
+					<li className="p-4">
+						<a className="hover:text-[#FFF5D6]" href="/home">Home</a>
+					</li>
+					<li className="p-4">
+						<a className="hover:text-[#FFF5D6]" href="/read">Read</a>
+					</li>
+					<li className="p-4">
+						<a className="hover:text-[#FFF5D6]" href="/history">History</a>
+					</li>
+				</ul>
+			</div>
 			<div className="hidden md:flex">
 				<ul className="flex text-2xl">
-
+  
 					<li className="p-2">
 						<ConfigProvider theme={{ token: { fontFamily: "monospace", colorBgTextHover: "white" } }}>
 							<Dropdown

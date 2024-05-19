@@ -6,6 +6,7 @@ import DecreaseFontSizeIcon from "@heroicons/react/24/outline/MagnifyingGlassMin
 import UploadTextIcon from "@heroicons/react/24/outline/ArrowUpTrayIcon";
 import SaveIcon from "@heroicons/react/24/outline/FolderIcon";
 import { set } from 'react-hook-form';
+import { bionicReading } from "bionic-reading";
 
 function ReadScreenComponent() {
   const textId = localStorage.getItem("textId");
@@ -35,11 +36,9 @@ function ReadScreenComponent() {
   };
 
   const applyBionicReading = (text) => {
-    return text
-      .split(' ')
-      .map(word => word.slice(0, Math.ceil(word.length / 2)) + word.slice(Math.ceil(word.length / 2))) // Split each word in half
-      .map(word => `<span style="font-weight: bold">${word.slice(0, 1)}</span>${word.slice(1)}`) // Bold the first half of each word
-      .join(' ');
+    return bionicReading(text, {
+      highlightTag: "strong",
+  })
   };
 
   const saveDocument = async () => {

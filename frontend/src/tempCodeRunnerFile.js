@@ -26,36 +26,23 @@ function App() {
 				<MyToast />
 				<Switch>
 
-					<Route exact path="/">
-								{isLoggedIn ? (
-									<Suspense
-										fallback={
-											<div className="flex h-screen">
-												<div className="font-mono font-bold text-3xl m-auto">
-													Loading...
-												</div>
-											</div>
-										}
-									>
-										<HomeScreen />
-									</Suspense>) : (
-									<Redirect to="/login" /> 
-					)}
-					</Route>
+     		<Route exact path="/">
+            			{isLoggedIn ? (
+          	   	 			<Suspense
+								  fallback={
+									  <div className="flex h-screen">
+										  <div className="font-mono font-bold text-3xl m-auto">
+											  Loading...
+										  </div>
+									  </div>
+								  }
+							  >
+								<HomeScreen />
+							  </Suspense>) : (
+              				<Redirect to="/login" /> 
+            )}
+          	</Route>
 
-					<Route path="/home">
-						<Suspense
-							fallback={
-								<div className="flex h-screen">
-									<div className="font-mono font-bold text-3xl m-auto">
-										Loading...
-									</div>
-								</div>
-							}
-						>
-							<HomeScreen />
-						</Suspense>
-					</Route>
 
 					<Route path="/login">
 						<Suspense
@@ -99,24 +86,24 @@ function App() {
 						</Suspense>
 					</Route>
 
-					<Route path="/signup">
-									<Suspense
-										fallback={
-											<div className="flex h-screen">
-												<div className="font-mono font-bold text-3xl m-auto">
-													Loading...
-												</div>
-											</div>
-										}
-									>
-										<SignUpScreen />
-									</Suspense>
-								</Route>
+          <Route path="/signup">
+						<Suspense
+							fallback={
+								<div className="flex h-screen">
+									<div className="font-mono font-bold text-3xl m-auto">
+										Loading...
+									</div>
+								</div>
+							}
+						>
+							<SignUpScreen />
+						</Suspense>
+					</Route>
 
-							</Switch>
-							<Footer />
-						</Layout>
-					</Router>
+				</Switch>
+				<Footer />
+			</Layout>
+		</Router>
 	);
 }
 
