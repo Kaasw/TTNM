@@ -107,9 +107,9 @@ const handleNoteChange = (event) => {
 };
 
 const addNote = () => {
-  if (newNote.trim() !== "") { // Kiểm tra ghi chú không rỗng
+  if (newNote.trim() !== "") { 
     setNotes([...notes, newNote]);
-    setNewNote(""); // Xóa nội dung input sau khi thêm
+    setNewNote(""); 
   }
 };
 
@@ -118,6 +118,7 @@ const deleteNote = (index) => {
   updatedNotes.splice(index, 1);
   setNotes(updatedNotes);
 }
+
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 flex justify-center items-center">
